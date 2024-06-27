@@ -87,10 +87,12 @@ public class FilterBuilding implements FilterByCurrentTime,
      */
     public void printFlight(int number, Flight flight) {
         System.out.println("Flight № " + number);
-        for (Segment seg: flight.getSegments()) {
+
+        flight.getSegments().stream().forEach(segment -> {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM YYYY, HH:mm ");
-            System.out.println("Departure date: " + dtf.format(seg.getDepartureDate()));
-            System.out.println("Arrival date: " + dtf.format(seg.getArrivalDate()));
-        }
+            System.out.println("Departure date: " + dtf.format(segment.getDepartureDate()));
+            System.out.println("Arrival date: " + dtf.format(segment.getArrivalDate()));
+        });
+
     }
 }
